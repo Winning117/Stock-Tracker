@@ -1,4 +1,4 @@
 # Format:
-# stock_name, purchase_price, number_of_shares
+# stock_name, purchase_price_per_share, number_of_shares
 # DON'T INCLUDE COMMAS IN THE PURCHASE PRICE OR NUBMER OF SHARES
 AAPL, 100, 25
