@@ -1,6 +1,10 @@
 import yfinance as yf
 from coinmarketcap import Market
 
+NORMAL = '\033[39m'
+GREEN = '\033[32m'
+RED = '\033[31m'
+
 overall_gains = 0
 
 
@@ -15,41 +19,51 @@ def parse_stocks_file():
     with open('my_stocks.txt') as f:
         lines = f.readlines()
         for line in lines:
-            line = line.replace(" ", "").replace("\n", "").split(",")
-            parse_stock(line)
+            if "#" in line:  # ignore comments
+                continue
+            elif line.count(',') is not 2:  # ensure there are only 2 commas in the line
+                line = line.strip('\n')
+                print(f"ERROR: There are more than 2 commas in the line [{RED}{line}{NORMAL}]\n")
+                continue
+            else:
+                line = line.replace(" ", "").replace("\n", "").split(",")
+                parse_stock(line)
 
 
 def parse_crypto_file():
     with open('my_crypto.txt') as f:
         lines = f.readlines()
         for line in lines:
-            line = line.replace(" ", "").replace("\n", "").split(",")
-            crypto_name = line[0]
-            purchase_price = float(line[1])
-            num_shares = float(line[2])
-            current_price = get_current_crypto_price(crypto_name)
-            gain = current_price - purchase_price
-            total_gain = gain*num_shares
+            if "#" in line:  # ignore comments
+                continue
+            elif line.count(',') is not 2:  # ensure there are only 2 commas in the line
+                line = line.strip('\n')
+                print(f"ERROR: There are more than 2 commas in the line [{RED}{line}{NORMAL}]\n")
+                continue
+            else:
+                line = line.replace(" ", "").replace("\n", "").split(",")
+                crypto_name = line[0]
+                purchase_price = float(line[1])
+                num_shares = float(line[2])
+                current_price = get_current_crypto_price(crypto_name)
+                gain = current_price - purchase_price
+                total_gain = gain*num_shares
 
-            global overall_gains
-            overall_gains += total_gain
+                global overall_gains
+                overall_gains += total_gain
 
-            print(f"Cryptocurrency: {crypto_name}")
-            print(f"Purchase price: ${format(purchase_price, '.2f')}")
-            print(f"Current price: ${format(current_price, '.2f')}")
-            print_colored_price("Gain per share:", gain)
-            print_colored_price("Total gain for this cryptocurrency:", total_gain)
-            print()
+                print(f"Cryptocurrency: {crypto_name}")
+                print(f"Purchase price: ${format(purchase_price, '.2f')}")
+                print(f"Current price: ${format(current_price, '.2f')}")
+                print_colored_price("Gain per share:", gain)
+                print_colored_price("Total gain for this cryptocurrency:", total_gain)
+                print()
 
 
 def print_colored_price(message, value):
     """
     Prints the gains/losses in colored format
     """
-    NORMAL = '\033[39m'
-    GREEN = '\033[32m'
-    RED = '\033[31m'
-
     number = "{0:,.2f}".format(value)
     if value >= 0:
         print(f"{message} {GREEN}${number}{NORMAL}")

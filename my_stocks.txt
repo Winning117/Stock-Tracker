@@ -1,2 +1,4 @@
-FIT, 3.28, 25
-SENS, 1.09, 100
+# Format:
+# stock_name, purchase_price, number_of_shares
+# DON'T INCLUDE COMMAS IN THE PURCHASE PRICE OR NUBMER OF SHARES
+AAPL, 100, 25

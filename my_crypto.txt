@@ -1,1 +1,4 @@
+# Format:
+# crypto_name, purchase_price, number_of_shares
+# DON'T INCLUDE COMMAS IN THE PURCHASE PRICE OR NUBMER OF SHARES
 LTC, 100, 25
