@@ -13,7 +13,7 @@ def main():
     parse_crypto_file()
     parse_stocks_file()
 
-    print(f"Total spent: ${total_spent}")
+    print(f"Total spent: ${format(total_spent, '.2f')}")
     print_colored_price("OVERALL GAINS:", overall_gains)
 
 
@@ -58,7 +58,8 @@ def parse_crypto_file():
                 total_spent += purchase_price_per_share*num_shares
 
                 print(f"Cryptocurrency: {crypto_name}")
-                print(f"Number of shares: {num_shares}")
+                num_shares_print = '{0:g}'.format(num_shares)  # remove trailing zeroes
+                print(f"Number of shares: {num_shares_print}")
                 print(f"Purchase price per share: ${format(purchase_price_per_share, '.2f')}")
                 print(f"Current price per share: ${format(current_price, '.2f')}")
                 print_colored_price("Gain per share:", gain)
@@ -87,7 +88,8 @@ def parse_stock(line):
         total_gain = gain*num_shares
 
         print(f"Stock: {stock_name}")
-        print(f"Number of shares: {num_shares}")
+        num_shares_print = '{0:g}'.format(num_shares)  # remove trailing zeroes
+        print(f"Number of shares: {num_shares_print}")
         print(f"Purchase price per share: ${format(purchase_price_per_share, '.2f')}")
         print(f"Current price per share: ${format(current_price, '.2f')}")
         print_colored_price("Gain per share:", gain)
