@@ -1,4 +1,4 @@
-# Stock-Tracker
+# Stock-and-Crypto-Tracker
 Shows you how much money you've gained per stock, per cryptocurrency, or both!
 
 
