@@ -71,11 +71,12 @@ def print_colored_price(message, value):
     """
     Prints the gains/losses in colored format
     """
-    number = "{0:,.2f}".format(value)
     if value >= 0:
-        print(f"{message} {GREEN}${number}{NORMAL}")
+        number_to_print = "{0:,.2f}".format(value)
+        print(f"{message} {GREEN}${number_to_print}{NORMAL}")
     else:
-        print(f"{message} {RED}${number}{NORMAL}")
+        number_to_print = "{0:,.2f}".format(value*-1)
+        print(f"{message} {RED}-${number_to_print}{NORMAL}")
 
 
 def parse_stock(line):
