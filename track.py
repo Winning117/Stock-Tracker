@@ -50,10 +50,11 @@ def print_colored_price(message, value):
     GREEN = '\033[32m'
     RED = '\033[31m'
 
+    number = "{0:,.2f}".format(value)
     if value >= 0:
-        print(f"{message} {GREEN}${format(value, '.2f')}{NORMAL}")
+        print(f"{message} {GREEN}${number}{NORMAL}")
     else:
-        print(f"{message} {RED}${format(value, '.2f')}{NORMAL}")
+        print(f"{message} {RED}${number}{NORMAL}")
 
 
 def parse_stock(line):
