@@ -16,6 +16,10 @@ Install pip3: `sudo apt-get install python3-pip`
 `pip3 install yfinance`  
 `pip3 install coinmarketcap` 
 
+# How to download this tool:
+Open up a terminal and change to the directory that you want the tool to exist in.  
+Copy and paste the following command: `git clone https://github.com/Winning117/Stock-and-Crypto-Tracker.git`  
+
 # How to configure this tool:
 If you wish to track stocks, edit my_stocks.txt  
 If you wish to track cryptocurrency, edit my_crypto.txt  
